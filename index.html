@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カウンターアプリ</title>
+    <style>
+        /* 全画面表示のための設定 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #aaaaaa;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* スクロールを防ぐ */
+        }
+
+        /* カウンター表示のスタイル */
+        #counter {
+            font-size: 10rem;
+            color: #333;
+            transition: background-color 0.1s ease;
+        }
+
+        /* クリック時の反転効果 */
+        body.flash {
+            background-color: #777;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">0</div>
+    <script>
+        // カウンターの初期値
+        let count = 0;
+
+        // カウンターを表示する要素を取得
+        const counterElement = document.getElementById("counter");
+
+        // カウントアップ処理
+        window.addEventListener("click", (event) => {
+            // カウントを1増やす
+            count++;
+            // カウンターの表示を更新
+            counterElement.textContent = count;
+            
+            // 画面反転効果
+            document.body.classList.add("flash");
+            setTimeout(() => {
+                document.body.classList.remove("flash");
+            }, 100);
+        });
+    </script>
+</body>
+</html>
